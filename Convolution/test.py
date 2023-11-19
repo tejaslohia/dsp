@@ -1,6 +1,8 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
+
+
+print("c:\ajay")
 
 M=30
 n=np.arange(0,M,1)

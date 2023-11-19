@@ -38,10 +38,13 @@ a=np.zeros(no_of_zeros)
 signal3=np.concatenate((a,signal3))
 signal3=np.concatenate((signal3,a))
 
-#low pass filter ()
-M=40
+#low pass filter (e rest -x
+M=20
 n=np.arange(0,M,1)
-h=0.54-0.4*np.cos(2*np.pi*n/M)
+xx=n*-1/M
+#xx=np.flip(n)*-1/M
+h=np.exp(xx)
+#h=0.54-0.4*np.cos(2*np.pi*n/M)
 k=np.sum(h)
 h=h/k
 
