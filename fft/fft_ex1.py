@@ -49,7 +49,7 @@ sigFFTHalf=sigfft[range(halfFFTLen)]
 #ploting waveforms and FFT
 fig1=plt.figure("Signal and FFT")
 
-#plot Singal 1
+#plot Singal 1      
 plt.subplot(4,1,1)
 plt.plot(signal1Time,signal1,color='green')
 plt.grid()
