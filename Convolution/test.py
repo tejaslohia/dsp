@@ -1,6 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+for index in range(5):
+    print(index)
+    
+M=30
+n=np.ones(M)
+n=n*-0.05
+index=int(M/2)
+n[index]=0
+sum=np.sum(n)
+n[index]=sum*-1
+
+na=np.arange(0,31,1)
+n=np.ones(30)
+n=n*-0.05
+n[15]=0
+sum=np.sum(n)
+n[15]=sum*-1;
+
 
 print("c:\ajay")
 
