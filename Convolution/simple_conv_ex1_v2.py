@@ -1,5 +1,4 @@
 '''
-
 Reference Book  : The Scientist and Engineer's Guide to  Digital Signal Processing
                     By Steven W. Smith, Ph.D.
 Chapter 6       : Convolution
