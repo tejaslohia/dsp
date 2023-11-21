@@ -80,26 +80,6 @@ count=np.arange(halfFFTLen)
 freq = count * SAMPLE_FREQ/fftLen;
 sigFFTHalf=sigfft[range(halfFFTLen)]
 
-absfft=abs(sigFFTHalf)
-max=np.argmax(absfft)
-maxv=absfft[max]
-
-Pn=0
-for i in range(halfFFTLen):
-#    if i != max:
-    v=absfft[i]
-    Pn=Pn+v*v
-
-Pn=Pn/fftLen
-
-Ps=absfft[max]*absfft[max]
-ratio=Ps/Pn
-snr=10*np.log10(ratio)
-
-Ps_db = 10 * np.log10(Ps)
-Pn_db = 10 * np.log10(Pn)
-snr1=Ps_db-Pn_db
-
 #The sampling time is the time interval between successive samples, also called the sampling interval or the sampling period, and denoted T
 #The sampling rate is the number of samples per second. It is the reciprocal of the sampling time, i.e. 1/T also called the sampling frequency, and denoted Fs
 #The frequency axis for the FFT is linked to the number N
