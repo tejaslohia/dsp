@@ -30,10 +30,10 @@ yn=np.convolve(xn,hn)
 yn_max=np.max(yn)
 yn_min=np.min(yn)
 
-#lengh of xn and hn
+#lengh of xn, hn and yn
 hn_len=len(hn)
 xn_len=len(xn)
-total_len=hn_len+xn_len-1
+yn_len=hn_len+xn_len-1
 
 #number of columns in plot
 subplot_cols=3
@@ -59,7 +59,7 @@ for index in range(xn_len):
     #plot cross mark and dot for each input
     titlestring=f"x[{index}]* h[n-{index}]]"
     l_append=np.zeros(index)
-    r_append=np.zeros(total_len - index - hn_len)
+    r_append=np.zeros(yn_len - index - hn_len)
 
     #Subplot
     plt.subplot(subplot_rows,subplot_cols,index+1)
@@ -68,14 +68,13 @@ for index in range(xn_len):
     plt.plot(x,l_append,'rx')
     x=np.arange(index,index+hn_len,1)
     plt.plot(x,i_yn,'go',label=titlestring)
-    x=np.arange(index+hn_len,total_len,1)
+    x=np.arange(index+hn_len,yn_len,1)
     plt.plot(x,r_append,'rx')
     #Set X and Y Limit,grid and legend
-    plt.xlim(-1,total_len)
-    plt.xticks(np.arange(-1,total_len+1,1))
+    plt.xlim(-1,yn_len)
+    plt.xticks(np.arange(-1,yn_len+1,1))
     plt.ylim(yn_min,yn_max)
     plt.grid(color = 'green', linestyle = '--', linewidth = 0.5)
     plt.legend()
 
 plt.show()
-
