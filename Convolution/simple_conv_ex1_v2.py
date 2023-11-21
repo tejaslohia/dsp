@@ -7,27 +7,19 @@ yn=np.convolve(xn,hn)
 
 hn_len=len(hn)
 xn_len=len(xn)
-
-index=1
+total_len=hn_len+xn_len-1
 
 subplot_cols=3
-
 subplot_rows=(xn_len/subplot_cols)
 temp=int(subplot_rows)
 if subplot_rows > temp:
     subplot_rows=temp+1
-print(subplot_rows)
+#print(subplot_rows)
 subplot_rows=int(subplot_rows)
 
-total_len=hn_len+xn_len-1
-
 fig2=plt.figure("Convolution : Contribution from Each Input ")
-plt.subplots_adjust(left=0.1,
-                    bottom=0.1, 
-                    right=0.9, 
-                    top=0.9, 
-                    wspace=0.2, 
-                    hspace=0.2)
+plt.subplots_adjust(left=0.1,bottom=0.1,right=0.9,top=0.9, 
+                    wspace=0.2,hspace=0.2)
 
 #fig2.tight_layout(pad=5.0)
 for index in range(xn_len):
@@ -51,8 +43,9 @@ for index in range(xn_len):
 
     plt.grid(color = 'green', linestyle = '--', linewidth = 0.5)
     plt.legend()
-
 plt.show()
+
+'''
 #ploting waveforms and FFT
 fig1=plt.figure("Signal and Convolution")
 #plot Singal 1      
@@ -75,4 +68,5 @@ plt.plot(yn,'ro')
 plt.grid()
 
 plt.show()
+'''
 
