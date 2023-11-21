@@ -21,12 +21,13 @@ subplot_rows=int(subplot_rows)
 
 total_len=hn_len+xn_len-1
 
-fig2=plt.figure("Signal and Convolution")
-
+fig2=plt.figure("Convolution : Contribution from Each Input ")
+#fig2.tight_layout(pad=5.0)
 for index in range(xn_len):
     #i_yn=np.convolve(xn[index],hn)
     i_yn=hn*(xn[index])
-
+    titlestring=f"x[{index}]* h[n-{index}]]"
+    #plt.title("hi")
     l_append=np.zeros(index)
     r_append=np.zeros(total_len - index - hn_len)
 
@@ -37,12 +38,12 @@ for index in range(xn_len):
     x=np.arange(0,index,1)
     plt.plot(x,l_append,'rx')
     x=np.arange(index,index+hn_len,1)
-    plt.plot(x,i_yn,'ro')
+    plt.plot(x,i_yn,'go',label=titlestring)
     x=np.arange(index+hn_len,total_len,1)
     plt.plot(x,r_append,'rx')
 
     plt.grid(color = 'green', linestyle = '--', linewidth = 0.5)
- 
+    plt.legend()
 
 plt.show()
 #ploting waveforms and FFT
