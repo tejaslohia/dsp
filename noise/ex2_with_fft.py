@@ -2,6 +2,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+def signaltonoise(Arr, axis=0, ddof=0):
+    Arr = np.asanyarray(Arr)
+    me = Arr.mean(axis)
+    sd = Arr.std(axis=axis, ddof=ddof)
+    return np.where(sd == 0, 0, me/sd)
+#Arr=[[20, 4, 7, 1, 34], [50, 12, 15, 34, 5]]
+#print(signaltonoise(Arr,axis=0,ddof=0))
+
 #Duration and Sample Freq
 #DURATION = 1.024 # 5 peak for 50 and 10 peak for 100
 DURATION = 0.512 # 5 peak for 50 and 10 peak for 100
@@ -88,17 +97,19 @@ Pn=0
 for i in range(halfFFTLen):
 #    if i != max:
     v=absfft[i]
-    Pn=Pn+v*v
+    Pn=Pn+(v*v)/2
 
 Pn=Pn/fftLen
 
-Ps=absfft[max]*absfft[max]
+Ps=absfft[max]*absfft[max]/2
 ratio=Ps/Pn
 snr=10*np.log10(ratio)
 
 Ps_db = 10 * np.log10(Ps)
 Pn_db = 10 * np.log10(Pn)
 snr1=Ps_db-Pn_db
+
+snr2=signaltonoise(y_volts)
 
 #The sampling time is the time interval between successive samples, also called the sampling interval or the sampling period, and denoted T
 #The sampling rate is the number of samples per second. It is the reciprocal of the sampling time, i.e. 1/T also called the sampling frequency, and denoted Fs
