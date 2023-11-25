@@ -48,12 +48,12 @@ plt.legend()
 power1=calculate_power(signal1)
 power2=calculate_power(signal2)
 power_combined = calculate_power(combined_signal)
-print(f"The power of the  signal 1 is: {power1}")
-print(f"The power of the  signal 2 is: {power2}")
-print(f"The power of the combined signal is: {power_combined}")
+print(f"Signal 1 Power : {power1}")
+print(f"Signal 2 Power : {power2}")
+print(f"Combined Signal Power : {power_combined}")
 #other way of calculating power of two signal
-print(f"signal 1 power : {amplitude_1**2/2}")
-print(f"signal 2 power : {amplitude_2**2/2}")
+print(f"Signal 1 Power : {amplitude_1**2/2}")
+print(f"Signal 2 Power : {amplitude_2**2/2}")
 snr_sin=10*np.log10(power1/power2)
 print("SNR : ",snr_sin)
 
@@ -72,7 +72,7 @@ plt.plot(sigFFTHalf)
 plt.show()
 #calculate power of total signal
 power=np.sum(sigFFTHalf**2/2)
-print("fft power ",power)
+print("FFT : Total Power : ",power)
 
 #calculate power of orig signal
 frequency_index = np.argmax(sigFFTHalf)
@@ -80,8 +80,8 @@ signalAmp = sigFFTHalf[frequency_index]
 signal_power=signalAmp**2/2
 noise_power=power-signal_power
 snr_fft=10*np.log10(signal_power/noise_power)
-print(f"FFT : singal power: {signal_power}")
-print(f"FFT : noise power: {noise_power}")
+print(f"FFT : Singal Power : {signal_power}")
+print(f"FFT : Noise Power : {noise_power}")
 print(f"FFT : SNR: {snr_fft}")
 
 
