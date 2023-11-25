@@ -42,12 +42,14 @@ def main():
     # Generate radar signal with noise
     t, noisy_signal, radar_signal, noise = generate_radar_signal(sampling_rate, duration, target_frequency, snr_target)
 
+    # Calculate powers 
     noise_only_power=calculate_power(noise)
     radar_signal_power = calculate_power(radar_signal)
     noise_signal_power = calculate_power(noisy_signal)
-    
     #snr = 10 * np.log10(radar_signal_power/(noise_signal_power-radar_signal_power))
     snr = 10 * np.log10(radar_signal_power/(noise_only_power))
+
+    # Print Result
     print(f"Radar Signal Power : {radar_signal_power}")
     print("Noise Raw Power :",noise_only_power)
     print(f"Noise and Radar Power {noise_signal_power}")
@@ -63,19 +65,22 @@ def main():
     #normalized half sinnal
     sigFFTHalf=sigFFT[range((int)(fftLen/2))]
 
-    #plot singal
-   # plt.figure(figsize=(10, 6))
-   # plt.plot(sigFFTHalf)
-   # plt.show()
     #calculate power of total signal
     total_power=np.sum(sigFFTHalf**2/2)
     #calculate power of orig signal
     frequency_index = np.argmax(sigFFTHalf)
+    
+    #calculate signal amp and power
     signalAmp = sigFFTHalf[frequency_index]
     signal_power=signalAmp**2/2
+
+    #calculate noise power
     noise_power=total_power-signal_power
+
+    #calculate snr
     snr_fft=10*np.log10(signal_power/noise_power)
 
+    #print result
     print(f"\nFFT : Radar Signal Power: {signal_power}")
     print(f"FFT : Noise Raw power: {noise_power}")
     print(f"FFT : Total Signal Power: {total_power}")
@@ -101,8 +106,6 @@ def main():
     plt.tight_layout()
 
     plt.show()
-
-#    print(f"SNR: {snr_result:.2f} dB")
 
 if __name__ == "__main__":
     main()
