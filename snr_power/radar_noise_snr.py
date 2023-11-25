@@ -14,8 +14,8 @@ def generate_radar_signal(sampling_rate, duration, target_frequency, snr):
     
     # Add noise to the signal
     noise = np.random.normal(0, 1, len(t))
-    noise_power = np.sqrt(np.mean(noise**2))
-    print(len(t))
+    #noise_power = np.sqrt(np.mean(noise**2))
+    #print(len(t))
     
     # Adjust noise amplitude to achieve the desired SNR
     radar_signal_power = np.sqrt(np.mean(radar_signal**2))
@@ -43,6 +43,7 @@ def main():
     radar_signal_power = calculate_power(radar_signal)
     noise_signal_power = calculate_power(noisy_signal)
     snr = 10 * np.log10(radar_signal_power/(noise_signal_power-radar_signal_power))
+    print("noise raw poer",calculate_power(noise))
     print(f"radar power {radar_signal_power}")
     print(f"noise+radar power {noise_signal_power}")
     print(f"noise  power {noise_signal_power - radar_signal_power}")
