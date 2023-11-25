@@ -5,7 +5,7 @@ def generate_radar_signal(sampling_rate, duration, target_frequency, snr):
     t = np.linspace(0, duration, int(sampling_rate * duration), endpoint=False)
     
     # Generate a radar signal with a target frequency
-    radar_signal = np.sin(2 * np.pi * target_frequency * t)
+    radar_signal = 5*np.sin(2 * np.pi * target_frequency * t)
     
     # Add noise to the signal
     noise = np.random.normal(0, 1, len(t))
