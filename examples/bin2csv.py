@@ -6,7 +6,7 @@ import struct
 file_path="./FFT.bin"
 csv_file_path="./FFT.csv"
 with open(file_path, 'rb') as binary_file:
-    binary_data = binary_file.read(10)
+    binary_data = binary_file.read()
 
 print(len(binary_data))
 
