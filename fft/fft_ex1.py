@@ -14,10 +14,10 @@ def generateSinWave(amplitude,freq,duration,sampleTime):
     return sinAmp,time
 
 #signal 1 and 2 :  Amp and Freq
-signal1Freq = 50
+signal1Freq = 20
 signal1Amp = 10
-signal2Freq = 800
-signal2Amp = 2
+signal2Freq = 100
+signal2Amp = 5
 
 #generate Two Sinosoidal Signal and Addition of Two Signal
 signal1,signal1Time=generateSinWave(signal1Amp,signal1Freq,DURATION,SAMPLE_TIME) #5 samples for 50
@@ -25,6 +25,7 @@ signal2,signal2Time=generateSinWave(signal2Amp,signal2Freq,DURATION,SAMPLE_TIME)
 #adding both singals
 signal_add = signal1 + signal2
 
+print(signal_add)
 #make first sample ampplitude of signle 2 to plot with same height on plot
 signal2[0]=signal1Amp #just for plot
 
