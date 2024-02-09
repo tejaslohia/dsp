@@ -4,6 +4,9 @@ https://stackoverflow.com/questions/14058340/adding-noise-to-a-signal-in-python
 import numpy as np
 import matplotlib.pyplot as plt
 
+len=5
+a=np.linspace(0,len/200000,len)
+print(len(a))
 t = np.linspace(1, 100, 1000)
 x_volts = 10*np.sin(t/(2*np.pi))
 x_watts = x_volts ** 2
